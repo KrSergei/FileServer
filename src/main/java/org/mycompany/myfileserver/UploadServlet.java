@@ -11,13 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-//public class UploadServlet extends HttpServlet {
-//    public void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
-//            throws IOException {
-//        httpServletResponse.getWriter().print("Hello from servlet");
-//    }
-//}
-@WebServlet("/UploadServlet")
+@WebServlet(urlPatterns = "/UploadServlet")
 @MultipartConfig(fileSizeThreshold=1024*1024*2,	// 2MB
         maxFileSize=1024*1024*10,		// 10MB
         maxRequestSize=1024*1024*50)	// 50MB
@@ -32,8 +26,7 @@ public class UploadServlet extends HttpServlet {
     /**
      * handles file upload
      */
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // gets absolute path of the web application
         String appPath = request.getServletContext().getRealPath("");
         // constructs path of the directory to save uploaded file

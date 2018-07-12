@@ -9,10 +9,10 @@
 </head>
 <body>
 <center>
-    <h1>File Upload</h1>
-    <form method="post" action="UploadServlet"
+    <h1>File Download</h1>
+    <form method="post" action="DownloadServlet"
         enctype="multipart/form-data">
-        Select file to upload: <input type="file" name="file" size="60" /><br />
+        Select file to download: <input type="file" name="file" size="60" /><br />
         <br /> <input type="submit" value="Upload" />
     </form>
 </center>

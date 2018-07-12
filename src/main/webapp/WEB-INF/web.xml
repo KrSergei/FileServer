@@ -4,15 +4,23 @@
 
 <web-app>
 <display-name>Archetype Created Web Application</display-name>
-
 <servlet>
     <servlet-name>UploadServlet</servlet-name>
     <servlet-class>org.mycompany.myfileserver.UploadServlet</servlet-class>
 </servlet>
 
+    <servlet>
+        <servlet-name>DowloadServlet</servlet-name>
+        <servlet-class>org.mycompany.myfileserver.DownloadServlet</servlet-class>
+    </servlet>
+
 <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/servlet</url-pattern>
-</servlet-mapping>
 
+</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/servlet</url-pattern>
+    </servlet-mapping>
 </web-app>

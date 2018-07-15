@@ -2,6 +2,7 @@ package org.mycompany.myfileserver;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -49,7 +50,6 @@ public class UploadServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/message.jsp").forward(
                 request, response);
     }
-
     /**
      * Extracts file name from HTTP header content-disposition
      */
@@ -63,4 +63,5 @@ public class UploadServlet extends HttpServlet {
         }
         return "";
     }
-}
+  }
+

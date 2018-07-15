@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>File Upload</title>
+<title>File Download</title>
 </head>
 <body>
 <center>
@@ -15,6 +15,7 @@
         Select file to download: <input type="file" name="file" size="60" /><br />
         <br /> <input type="submit" value="Upload" />
     </form>
+    <a href="http://localhost:8888/DowloadServlet"></a>
 </center>
 </body>
 </html>

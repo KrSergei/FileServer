@@ -18,12 +18,16 @@ public class DownloadServlet extends HttpServlet {
         File directory = new File(path);
         if (directory.isDirectory()) {
             String[] content = directory.list();
+
             if (content != null) {
                 response.setContentType("charset=utf-8");
                 PrintWriter out = response.getWriter();
+//                getServletContext().getRequestDispatcher("/download.jsp").forward(
+//                        request, response);
+                out.println(" <center><h1>Select file for download</h1></center>");
                 for (String eachFile : content) {
                     File file = new File(path + "/" + eachFile);
-                    out.println(file.isDirectory() ? (eachFile + "is directory") : (eachFile + "is file"));
+                    out.println(file.isDirectory() ? ("<center>" + eachFile + " is directory</br>") : ("<center><a href=localhost:8888/DownloadServlet>" + eachFile + "</a></br><center>"));
                 }
                 out.close();
             }

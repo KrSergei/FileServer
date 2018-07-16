@@ -9,13 +9,17 @@
 </head>
 <body>
 <center>
-    <h1>File Download</h1>
+    <h1>Select file for download</h1>
     <form method="post" action="DownloadServlet"
         enctype="multipart/form-data">
-        Select file to download: <input type="file" name="file" size="60" /><br />
-        <br /> <input type="submit" value="Upload" />
+     <script>
+      for (String eachFile : content) {
+                         File file = new File(path + "/" + eachFile);
+                         out.println(file.isDirectory() ? (eachFile + "is directory") : ("<a href=localhost:8888/DownloadServlet>" + eachFile + "</a></br>"));
+                     }
+     </script>
     </form>
-    <a href="http://localhost:8888/DowloadServlet"></a>
+
 </center>
 </body>
 </html>

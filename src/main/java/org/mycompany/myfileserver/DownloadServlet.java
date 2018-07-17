@@ -1,6 +1,7 @@
 package org.mycompany.myfileserver;
 
 import java.io.*;
+import java.net.URI;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,26 +12,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/DownloadServlet")
+@WebServlet(urlPatterns ="/DownloadServlet")
 public class DownloadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = "src/main/webapp/uploadfiles";
-        File directory = new File(path);
-        if (directory.isDirectory()) {
-            String[] content = directory.list();
 
-            if (content != null) {
-                response.setContentType("charset=utf-8");
-                PrintWriter out = response.getWriter();
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String fileName = "";
+        String filePath = "src/main/webapp/uploadfiles";
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\"");
+        int i;
+        FileInputStream file = new FileInputStream(filePath + fileName);
+        while ((i = file.read()) != -1) {
+            out.write(i);
+        }
+        file.close();
+        out.close();
+    }
+
+
+
+//        String path = "src/main/webapp/uploadfiles";
+//        File directory = new File(path);
+//        if (directory.isDirectory()) {
+//            String[] content = directory.list();
+//            if (content != null) {
+//                response.setContentType("charset=utf-8");
+//                PrintWriter out = response.getWriter();
 //                getServletContext().getRequestDispatcher("/download.jsp").forward(
 //                        request, response);
-                out.println(" <center><h1>Select file for download</h1></center>");
-                for (String eachFile : content) {
-                    File file = new File(path + "/" + eachFile);
-                    out.println(file.isDirectory() ? ("<center>" + eachFile + " is directory</br>") : ("<center><a href=localhost:8888/DownloadServlet>" + eachFile + "</a></br><center>"));
-                }
-                out.close();
-            }
+//                out.println(" <center><h1>Select file for download</h1></center>");
+//                for (String eachFile : content) {
+//                    File file = new File(path + "/" + eachFile);
+//                    response.setContentType("application/octet-stream");
+//                    out.println(file.isDirectory() ? ("<center>" + eachFile + " is directory</br>") : (response.setHeader("Content-Disposition", "attachment;filename=\" "+eachFile+"\""));
+////                    out.println(file.isDirectory() ? ("<center>" + eachFile + " is directory</br>") : ("<center><a href=localhost:8888/DownloadServlet>" + eachFile + "</a></br></center>"));
+//
+//                }
+//                out.close();
+//          }
+
         }
 //        String filePath = path;
 //        File downloadFile = new File(filePath);
@@ -72,8 +95,6 @@ public class DownloadServlet extends HttpServlet {
 //
 //        inStream.close();
 //        outStream.close();
-//    }
-
-    }
-}
+//  }
+//}
 

@@ -12,12 +12,6 @@
     <h1>Select file for download</h1>
     <form method="post" action="DownloadServlet"
         enctype="multipart/form-data">
-     <script>
-      for (String eachFile : content) {
-                         File file = new File(path + "/" + eachFile);
-                         out.println(file.isDirectory() ? (eachFile + "is directory") : ("<a href=localhost:8888/DownloadServlet>" + eachFile + "</a></br>"));
-                     }
-     </script>
     </form>
 
 </center>
